@@ -60,26 +60,26 @@ class dataset:
             count = 0
             printProgressBar(count_progress+1, len(labels), prefix='Progress:', suffix='Complete', length=50)
             count_progress += 1
-
+#TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
             for sample in class_sample:
                 x = []
                 mfcc_feat = mfcc(sample, 44100)
-                longi = len(mfcc_feat)
-                punt = round(longi / 2)
-                tmp_feat = mfcc_feat[punt - 2 * 44100:punt + 2 * 44100, :]
-                if(mfcc_feat[punt - 2*44100:punt + 2*44100, :].shape[0] > 560):
-                    x.append(tmp_feat[0:560, :])
-                else:
-                    x.append(mfcc_feat[punt - 2*44100:punt + 2*44100, :])
-                x = np.array(x)
-                x = x.transpose(1, 2, 0)
-                if count < n_samples_train:
-                    X_train.append(x)
-                    self.labels_train.append(label)
-                    count += 1
-                else:
-                    X_val.append(x)
-                    self.labels_val.append(label)
+                #longi = len(mfcc_feat)
+               # punt = round(longi / 2)
+                #tmp_feat = mfcc_feat[punt - 2 * 44100:punt + 2 * 44100, :]
+                #if(mfcc_feat[punt - 2*44100:punt + 2*44100, :].shape[0] > 560):
+                #    x.append(tmp_feat[0:560, :])
+                #else:
+                #    x.append(mfcc_feat[punt - 2*44100:punt + 2*44100, :])
+                #x = np.array(x)
+                #x = x.transpose(1, 2, 0)
+                #if count < n_samples_train:
+                #    X_train.append(x)
+                #    self.labels_train.append(label)
+                #    count += 1
+                #else:
+                #    X_val.append(x)
+                #    self.labels_val.append(label)
         # Convert data values to float32
         self.X_train = np.array([image.astype('float32') for image in X_train])
         self.X_val = np.array([image.astype('float32') for image in X_val])
