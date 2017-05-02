@@ -1,6 +1,9 @@
 import numpy as np
 from skimage import io
 from random import sample
+from python_speech_features import mfcc
+from python_speech_features import delta
+from python_speech_features import logfbank
 from scipy import misc
 import os, sys
 from scipy.spatial import distance

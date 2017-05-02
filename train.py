@@ -27,6 +27,9 @@ from load_dataset import *
 from dataset import *
 from matplotlib import pyplot as plt
 from keras.callbacks import Callback
+from python_speech_features import mfcc
+from python_speech_features import delta
+from python_speech_features import logfbank
 
 
 def plot_metrics(history):
