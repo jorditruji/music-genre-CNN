@@ -1,5 +1,4 @@
 from dataset import *
-from Music_model import *
 from music_tagger_cnn import *
 import numpy as np
 from keras.models import Sequential
