@@ -5,7 +5,7 @@ from scipy import misc
 import os, sys
 from scipy.spatial import distance
 import scipy.io.wavfile as wav
-def printProgressBar(iteration, total, prefix = '', suffix = '', decimals = 1, length = 100, fill = '█'):
+def printProgressBar(iteration, total, prefix = '', suffix = '', decimals = 1, length = 100, fill = '|'):
     """
     Call in a loop to create terminal progress bar
     @params:
