@@ -68,5 +68,5 @@ def load_audio(path):
     samplerate, samples = wav.read(path)
     longi = len(samples)
     punt = int(round(longi / 2))
-    signal = samples[punt-2*samplerate : punt + 2 * samplerate  , :]
+    signal = samples[punt-2*samplerate : punt + 2 * samplerate]
     return signal
