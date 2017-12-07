@@ -82,7 +82,7 @@ model.fit(X, y, epochs=500, batch_size=1, verbose=2)
 
 
 sgd = SGD(lr=0.1, momentum=0, decay=0.002, nesterov=True)
-model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
+model.compile(loss='categorical_crossentropy', optimizer='RMSProp', metrics=['accuracy'])
 history = model.fit(data.X_train, data.labels_train,
                               validation_data=(data.X_val, data.labels_val), nb_epoch=100,
                               batch_size=24,verbose=1)
