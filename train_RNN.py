@@ -71,7 +71,7 @@ print(data.X_train.shape)
 input_tensor = Input(shape=(1, 159, 13))
 
 model = Sequential()
-model.add(LSTM(6, input_shape= (1,22050)))
+model.add(LSTM(2, input_shape= (1,22050)))
 
 model.add(Dense(10, activation='softmax'))
 model.summary()
@@ -85,7 +85,7 @@ sgd = SGD(lr=0.1, momentum=0, decay=0.002, nesterov=True)
 model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
 history = model.fit(data.X_train, data.labels_train,
                               validation_data=(data.X_val, data.labels_val), nb_epoch=100,
-                              batch_size=5,verbose=1)
+                              batch_size=24,verbose=1)
 #loss_and_metrics = model.evaluate(data.X_val, data.labels_val, batch_size=5)
 plot_metrics(history)
 predict_labels=model.predict(data.X_val)
