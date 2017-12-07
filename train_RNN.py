@@ -71,7 +71,7 @@ print(data.X_train.shape)
 input_tensor = Input(shape=(1, 159, 13))
 
 model = Sequential()
-model.add(LSTM(32, input_shape=(X.shape[1], X.shape[2])))
+model.add(LSTM(32, input_shape=(X_train.shape[1], X_train.shape[2])))
 model.add(Dense(y.shape[1], activation='softmax'))
 '''
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
