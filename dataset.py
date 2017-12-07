@@ -1,7 +1,7 @@
 from load_dataset import *
 from keras.utils import np_utils
-from python_speech_features.python_speech_features import mfcc
-from python_speech_features.python_speech_features import logfbank
+from python_speech_features import mfcc
+from python_speech_features import logfbank
 
 class dataset:
     """
@@ -26,17 +26,21 @@ class dataset:
         self.n_classes = n_classes
         self.n_representations = n_representations  # number of representations for each class, the representations will be splited in 3 (train, val, test)
         self.total = n_representations * n_classes
+        self.names_class=[]
 
     def create(self):
         names = load_names_from_folders(self.root_path)
+        self.names_class=names
         filelist = []  # list of lists
         labels = []  # list of labels related to data list
         # Creation list of files for each class stored in a list
         print('Loading images...')
-
+        
         for i in range(self.n_classes):
             filelist.append(make_filelist(self.root_path + "/" + names[i], self.n_representations))
             labels.append(names[i])
+
+
         # Store images in a
         data = []
         i = 0
@@ -60,19 +64,24 @@ class dataset:
             count = 0
             printProgressBar(count_progress+1, len(labels), prefix='Progress:', suffix='Complete', length=50)
             count_progress += 1
-
+#TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
             for sample in class_sample:
                 x = []
                 mfcc_feat = mfcc(sample, 44100)
-                longi = len(mfcc_feat)
-                punt = round(longi / 2)
-                tmp_feat = mfcc_feat[punt - 2 * 44100:punt + 2 * 44100, :]
-                if(mfcc_feat[punt - 2*44100:punt + 2*44100, :].shape[0] > 560):
-                    x.append(tmp_feat[0:560, :])
-                else:
-                    x.append(mfcc_feat[punt - 2*44100:punt + 2*44100, :])
+                
+
+                x.append(mfcc_feat)
+
+                #longi = len(mfcc_feat)
+               # punt = round(longi / 2)
+                #tmp_feat = mfcc_feat[punt - 2 * 44100:punt + 2 * 44100, :]
+                #if(mfcc_feat[punt - 2*44100:punt + 2*44100, :].shape[0] > 560):
+                #    x.append(tmp_feat[0:560, :])
+                #else:
+                #    x.append(mfcc_feat[punt - 2*44100:punt + 2*44100, :])
                 x = np.array(x)
-                x = x.transpose(1, 2, 0)
+                print(x.shape)
+                #x = x.transpose(1, 2, 0)
                 if count < n_samples_train:
                     X_train.append(x)
                     self.labels_train.append(label)
@@ -90,8 +99,8 @@ class dataset:
         y_train = np.searchsorted(train_sort, self.labels_train)
         y_val = np.searchsorted(val_sort, self.labels_val)
         lab = np.searchsorted(lab_sort, labels)
-        self.X_train = self.X_train.transpose(0, 3, 2, 1)
-        self.X_val = self.X_val.transpose(0, 3, 2, 1)
+        self.X_train = self.X_train.transpose(0, 1, 3, 2)
+        self.X_val = self.X_val.transpose(0, 1, 3, 2)
 
         # convert integers to dummy variables (i.e. one hot encoded)
         self.labels_train = np_utils.to_categorical(y_train, self.n_classes)

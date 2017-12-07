@@ -1,11 +1,14 @@
 import numpy as np
 from skimage import io
 from random import sample
+from python_speech_features import mfcc
+from python_speech_features import delta
+from python_speech_features import logfbank
 from scipy import misc
 import os, sys
 from scipy.spatial import distance
 import scipy.io.wavfile as wav
-def printProgressBar(iteration, total, prefix = '', suffix = '', decimals = 1, length = 100, fill = '█'):
+def printProgressBar(iteration, total, prefix = '', suffix = '', decimals = 1, length = 100, fill = '|'):
     """
     Call in a loop to create terminal progress bar
     @params:
@@ -20,7 +23,7 @@ def printProgressBar(iteration, total, prefix = '', suffix = '', decimals = 1, l
     percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
     filledLength = int(length * iteration // total)
     bar = fill * filledLength + '-' * (length - filledLength)
-    print('\r%s |%s| %s%% %s' % (prefix, bar, percent, suffix), end = '\r')
+    #print('\r%s |%s| %s%% %s' % (prefix, bar, percent, suffix), end = '\r')
     # Print New Line on Complete
     if iteration == total:
         print()
@@ -63,4 +66,7 @@ def load_labels(file_path):
 def load_audio(path):
     # Open audiofile from path
     samplerate, samples = wav.read(path)
-    return samples
+    longi = len(samples)
+    punt = int(round(longi / 2))
+    signal = samples[punt-4*samplerate : punt + 4 * samplerate]
+    return signal

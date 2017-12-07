@@ -89,6 +89,9 @@ def MusicTaggerCNN(weights='msd', input_tensor=None,
     # Input block
     x = BatchNormalization(axis=freq_axis, name='bn_0_freq')(melgram_input)
 
+
+
+
     # Conv block 1
     x = Convolution2D(64, 3, 3, border_mode='same', name='conv1')(x)
     x = BatchNormalization(axis=channel_axis, mode=0, name='bn1')(x)
@@ -102,10 +105,11 @@ def MusicTaggerCNN(weights='msd', input_tensor=None,
     x = MaxPooling2D(pool_size=(2, 4), name='pool2')(x)
 
     # Conv block 3
-    x = Convolution2D(128, 3, 3, border_mode='same', name='conv3')(x)
+    x = Convolution2D(256, 3, 3, border_mode='same', name='conv3')(x)
     x = BatchNormalization(axis=channel_axis, mode=0, name='bn3')(x)
     x = ELU()(x)
     x = MaxPooling2D(pool_size=(2, 4), name='pool3')(x)
+
 
     
 
