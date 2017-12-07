@@ -62,8 +62,8 @@ class dataset:
                 audio=audio.reshape(6,44100)
                 print (audio.shape)
                 for frame in range(audio.shape[0]):
-                    print (frame.shape)
-                    class_data.append(frame)
+
+                    class_data.append(audio[frame,:])
 
                 #class_data.append()#load_audio(file))
             data.append(class_data)
