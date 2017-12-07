@@ -72,6 +72,7 @@ input_tensor = Input(shape=(1, 159, 13))
 
 model = Sequential()
 model.add(LSTM(32, input_shape= (1,264600)))
+model.add(LSTM(512))
 model.add(Dense(10, activation='softmax'))
 '''
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
