@@ -67,7 +67,7 @@ class dataset:
 #TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
             for sample in class_sample:
                 x = []
-                mfcc_feat = mfcc(sample, 44100)
+                #mfcc_feat = mfcc(sample, 44100)
                 
 
                 x.append(sample)
