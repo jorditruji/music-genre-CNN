@@ -74,17 +74,18 @@ model = Sequential()
 model.add(LSTM(64, input_shape= (1,44100)))
 
 model.add(Dense(10, activation='softmax'))
+model.summary()
 '''
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 model.fit(X, y, epochs=500, batch_size=1, verbose=2)
 '''
 
 
-sgd = SGD(lr=0.01, momentum=0, decay=0.002, nesterov=True)
+sgd = SGD(lr=0.1, momentum=0, decay=0.002, nesterov=True)
 model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
 history = model.fit(data.X_train, data.labels_train,
                               validation_data=(data.X_val, data.labels_val), nb_epoch=100,
-                              batch_size=5)
+                              batch_size=5,verbose=1)
 #loss_and_metrics = model.evaluate(data.X_val, data.labels_val, batch_size=5)
 plot_metrics(history)
 predict_labels=model.predict(data.X_val)
