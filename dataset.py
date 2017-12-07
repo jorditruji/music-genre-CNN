@@ -2,7 +2,7 @@ from load_dataset import *
 from keras.utils import np_utils
 from python_speech_features import mfcc
 from python_speech_features import logfbank
-
+from keras.layers.recurrent import LSTM
 class dataset:
     """
         Class Dataset:
