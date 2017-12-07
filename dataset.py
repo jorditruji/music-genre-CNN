@@ -94,8 +94,8 @@ class dataset:
         y_train = np.searchsorted(train_sort, self.labels_train)
         y_val = np.searchsorted(val_sort, self.labels_val)
         lab = np.searchsorted(lab_sort, labels)
-        self.X_train = self.X_train.transpose(0, 1, 3, 2)
-        self.X_val = self.X_val.transpose(0, 1, 3, 2)
+        #self.X_train = self.X_train.transpose(0, 1, 3, 2)
+        #self.X_val = self.X_val.transpose(0, 1, 3, 2)
 
         # convert integers to dummy variables (i.e. one hot encoded)
         self.labels_train = np_utils.to_categorical(y_train, self.n_classes)
