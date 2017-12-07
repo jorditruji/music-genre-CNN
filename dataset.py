@@ -74,7 +74,7 @@ class dataset:
 
 
                 x = np.array(x)
-                print(x.shape)
+                #print(x.shape)
                 #x = x.transpose(1, 2, 0)
                 if count < n_samples_train:
                     X_train.append(np.squeeze(x))
