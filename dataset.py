@@ -27,6 +27,14 @@ class dataset:
         self.n_representations = n_representations  # number of representations for each class, the representations will be splited in 3 (train, val, test)
         self.total = n_representations * n_classes
         self.names_class=[]
+    # convert an array to a dataset matrix
+    def create_dataset(dataset, look_back=1):
+        dataX, dataY = [], []
+        for i in range(len(dataset)-look_back-1):
+            a = dataset[i:(i+look_back), 0]
+            dataX.append(a)
+            dataY.append(dataset[i + look_back, 0])
+        return numpy.array(dataX), numpy.array(dataY)
 
     def create(self):
         names = load_names_from_folders(self.root_path)
@@ -49,7 +57,12 @@ class dataset:
             i += 1
             class_data = []
             for file in data_class:
-                class_data.append(load_audio(file))
+                audio=load_audio(file)
+                audio=audio.reshape(6,44100)
+                for frame in range(audio.shape[0]):
+                    class_data.append(frame)
+
+                #class_data.append()#load_audio(file))
             data.append(class_data)
 
         n_samples_class = self.n_representations
