@@ -64,7 +64,6 @@ class dataset:
                 for a in range(nframes):
                     class_data.append(audio[a*samplerate:(a+1)*samplerate])
 
-                audio=audio.reshape(len(audio)/(6*samplerate),samplerate*6)
 
 
                 #class_data.append()#load_audio(file))
