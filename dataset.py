@@ -41,7 +41,7 @@ class dataset:
             labels.append(names[i])
 
 
-        # Store images in a
+        # Store adios in a
         data = []
         i = 0
         for data_class in filelist:
@@ -70,15 +70,9 @@ class dataset:
                 mfcc_feat = mfcc(sample, 44100)
                 
 
-                x.append(mfcc_feat)
+                x.append(sample)
 
-                #longi = len(mfcc_feat)
-               # punt = round(longi / 2)
-                #tmp_feat = mfcc_feat[punt - 2 * 44100:punt + 2 * 44100, :]
-                #if(mfcc_feat[punt - 2*44100:punt + 2*44100, :].shape[0] > 560):
-                #    x.append(tmp_feat[0:560, :])
-                #else:
-                #    x.append(mfcc_feat[punt - 2*44100:punt + 2*44100, :])
+
                 x = np.array(x)
                 print(x.shape)
                 #x = x.transpose(1, 2, 0)
@@ -89,6 +83,7 @@ class dataset:
                 else:
                     X_val.append(x)
                     self.labels_val.append(label)
+
         # Convert data values to float32
         self.X_train = np.array([image.astype('float32') for image in X_train])
         self.X_val = np.array([image.astype('float32') for image in X_val])

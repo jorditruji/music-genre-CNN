@@ -33,7 +33,6 @@ import matplotlib
 matplotlib.use('Agg') 
 
 
-
 def plot_metrics(history):
 
     print(history.history.keys())
@@ -68,7 +67,8 @@ data.create()
 print(data.X_train.shape)
 
 # Build the VGG model
-input_tensor = Input(shape=(1, 26, 119))
+
+input_tensor = Input(shape=(1, 159, 13))
 model =MusicTaggerCNN(input_tensor=input_tensor, include_top=False, weights=None)
 last_layer = model.get_layer('pool3').output
 out = Flatten()(last_layer)
