@@ -77,7 +77,7 @@ class dataset:
                 print(x.shape)
                 #x = x.transpose(1, 2, 0)
                 if count < n_samples_train:
-                    X_train.append(x)
+                    X_train.append(np.squeeze(x))
                     self.labels_train.append(label)
                     count += 1
                 else:
