@@ -72,4 +72,4 @@ def load_audio(path):
     punt = int(round(longi / 2))
     signal = samples[punt-12*samplerate : punt + 12 * samplerate]
 
-    return signal
+    return signal, samplerate
