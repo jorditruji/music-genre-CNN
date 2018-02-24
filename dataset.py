@@ -41,7 +41,7 @@ class dataset:
         self.names_class=names
         filelist = []  # list of lists
         labels = []
-        lab_s  # list of labels related to data list
+        lab_s =[]  # list of labels related to data list
         # Creation list of files for each class stored in a list
         print('Loading songs...')
         
