@@ -42,14 +42,14 @@ class dataset:
         filelist = []  # list of lists
         labels = []  # list of labels related to data list
         # Creation list of files for each class stored in a list
-        print('Loading images...')
+        print('Loading songs...')
         
         for i in range(self.n_classes):
             filelist.append(make_filelist(self.root_path + "/" + names[i], self.n_representations))
             labels.append(names[i])
 
 
-        # Store adios in a
+        # Store audios in a
         data = []
         i = 0
         for data_class in filelist:
@@ -58,18 +58,19 @@ class dataset:
             class_data = []
             for file in data_class:
                 audio, samplerate=load_audio(file)
-                print (audio.shape)
+
                 nframes= int(len(audio)/(samplerate*6))
                 
                 for a in range(nframes):
                     class_data.append(audio[a*samplerate:(a+1)*samplerate])
-
+                    print (class_data.shape)
 
 
                 #class_data.append()#load_audio(file))
             data.append(class_data)
 
         n_samples_class = self.n_representations*6
+        print(n_samples_class)
         n_samples_train = round(n_samples_class * 0.6)
         n_samples_test = n_samples_class - n_samples_train
         print('')
