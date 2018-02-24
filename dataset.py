@@ -50,6 +50,7 @@ class dataset:
             for a in range(400):
                 lab_s.append(names[i])
             labels.append(lab_s)
+            lab_s=[]
 
 
         # Store audios in a
@@ -129,8 +130,8 @@ class dataset:
 
         print('')
         print("Number of classes: ", self.n_classes)
-        print('n_samples train: ', len(self.X_train), n_samples_train)
-        print('n_samples test: ', len(self.X_val), n_samples_test)
+        print('n_samples train: ', np.array(self.X_train).shape)
+        print('n_samples test: ',  np.array(self.X_val).shape)
 
 
 
