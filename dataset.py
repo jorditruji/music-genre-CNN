@@ -70,7 +70,7 @@ class dataset:
             data.append(class_data)
 
         n_samples_class = self.n_representations*6
-        print(data.shape)
+        print(np.array(data).shape)
         n_samples_train = round(n_samples_class * 0.6)
         n_samples_test = n_samples_class - n_samples_train
         print('')
