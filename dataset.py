@@ -113,8 +113,8 @@ class dataset:
                 self.labels_val.append(label)
 
         # Convert data values to float32
-        self.X_train = np.array([image.astype('float32') for image in X_train])
-        self.X_val = np.array([image.astype('float32') for image in X_val])
+        self.X_train = np.array( X_train)
+        self.X_val = np.array(X_val)
         # convert labels strings to integers
         train_sort = np.sort(np.unique(self.labels_train))
         val_sort = np.sort(np.unique(self.labels_val))
