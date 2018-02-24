@@ -40,13 +40,16 @@ class dataset:
         names = load_names_from_folders(self.root_path)
         self.names_class=names
         filelist = []  # list of lists
-        labels = []  # list of labels related to data list
+        labels = []
+        lab_s  # list of labels related to data list
         # Creation list of files for each class stored in a list
         print('Loading songs...')
         
         for i in range(self.n_classes):
             filelist.append(make_filelist(self.root_path + "/" + names[i], self.n_representations))
-            labels.append(names[i])
+            for a in range(400):
+                lab_s.append(names[i])
+            labels.append(lab_s)
 
 
         # Store audios in a
@@ -69,8 +72,8 @@ class dataset:
                 #class_data.append()#load_audio(file))
             data.append(class_data)
 
-        n_samples_class = self.n_representations*6
-        print(np.array(data)[0,:,:].shape)
+        n_samples_class = 400
+        #print(np.array(data)[0,:,:].shape)
         n_samples_train = round(n_samples_class * 0.6)
         n_samples_test = n_samples_class - n_samples_train
         print('')
@@ -78,7 +81,11 @@ class dataset:
         count_progress = 0
         X_train = []
         X_val = []
+        print(len(data))
+        print(len(labels))
         for class_sample, label in zip(data, labels):
+            print(len(class_sample))
+            print(len(label))
             count = 0
             printProgressBar(count_progress+1, len(labels), prefix='Progress:', suffix='Complete', length=50)
             count_progress += 1
@@ -94,13 +101,13 @@ class dataset:
                 x = np.array(x)
                 #print(x.shape)
                 #x = x.transpose(1, 2, 0)
-                if count < n_samples_train:
-                    X_train.append(x)
-                    self.labels_train.append(label)
-                    count += 1
-                else:
-                    X_val.append(x)
-                    self.labels_val.append(label)
+            if count < n_samples_train:
+                X_train.append(x)
+                self.labels_train.append(label)
+                count += 1
+            else:
+                X_val.append(x)
+                self.labels_val.append(label)
 
         # Convert data values to float32
         self.X_train = np.array([image.astype('float32') for image in X_train])
