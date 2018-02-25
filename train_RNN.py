@@ -65,7 +65,7 @@ def plot_metrics(history):
 data = dataset('/imatge/epresas/music_genre/data/genres', 10, 100)
 data.create()
 print(data.X_train.shape)
-print(data.labels_train)
+print(data.labels_train.shape)
 # Build the RNN model
 
 input_tensor = Input(shape=(1, 159, 13))
