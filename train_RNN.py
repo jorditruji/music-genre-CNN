@@ -68,7 +68,7 @@ print(data.X_train.shape)
 print(data.labels_train.shape)
 # Build the RNN model
 
-input_tensor = Input(shape=(1, 159, 13))
+input_tensor = Input(shape=data.X_train.shape)
 
 model = Sequential()
 model.add(LSTM(2, input_shape= input_tensor.shape))
