@@ -62,11 +62,7 @@ class dataset:
             class_data = []
             for file in data_class:
                 audio, samplerate=load_audio(file)
-
-                nframes= int(len(audio)/(samplerate*6))
-                
-                for a in range(nframes):
-                    class_data.append(audio[a*samplerate:(a+1)*samplerate])
+                class_data.append(audio)
                     #print (np.array(class_data).shape)
 
 
