@@ -64,8 +64,8 @@ def plot_metrics(history):
 
 data = dataset('/imatge/epresas/music_genre/data/genres', 10, 100)
 data.create()
-data.X_val=np.reshape(data.X_val, (400,264600), order='C')
-data.X_train=np.reshape(data.X_train, (600,264600), order='C')
+#data.X_val=np.reshape(data.X_val, (400,264600), order='C')
+#data.X_train=np.reshape(data.X_train, (600,264600), order='C')
 print(data.X_train.shape)
 print(data.labels_train.shape)
 # Build the RNN model
