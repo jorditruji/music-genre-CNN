@@ -45,12 +45,10 @@ class dataset:
         # Creation list of files for each class stored in a list
         print('Loading songs...')
         
+
         for i in range(self.n_classes):
             filelist.append(make_filelist(self.root_path + "/" + names[i], self.n_representations))
-            for a in range(400):
-                lab_s.append(names[i])
-            labels.append(lab_s)
-            lab_s=[]
+            labels.append(names[i])
 
 
         # Store audios in a
@@ -98,7 +96,7 @@ class dataset:
                     self.labels_val.append(label)
 
         # Convert data values to float32
-        self.X_train = np.array( X_train)
+        self.X_train = np.array(X_train)
         self.X_val = np.array(X_val)
         # convert labels strings to integers
         train_sort = np.sort(np.unique(self.labels_train))
