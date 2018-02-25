@@ -91,13 +91,13 @@ class dataset:
                 x.append(sample)
                 x = np.array(x)
 
-            if count < n_samples_train:
-                X_train.append(x)
-                self.labels_train.append(label)
-                count += 1
-            else:
-                X_val.append(x)
-                self.labels_val.append(label)
+                if count < n_samples_train:
+                    X_train.append(x)
+                    self.labels_train.append(label)
+                    count += 1
+                else:
+                    X_val.append(x)
+                    self.labels_val.append(label)
 
         # Convert data values to float32
         self.X_train = np.array( X_train)
