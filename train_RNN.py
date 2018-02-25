@@ -71,10 +71,10 @@ print(data.labels_train.shape)
 # Build the RNN model
 
 input_tensor = Input(shape=(1, 264600))
-
+print(input_tensor.shape)
 model = Sequential()
 model.add(LSTM(output_dim=50,
-    return_sequences=True, input_tensor= input_tensor))
+    return_sequences=True, input_shape= input_tensor.shape))
 
 model.add(Dense(10, activation='softmax'))
 
