@@ -71,7 +71,7 @@ print(data.labels_train.shape)
 # Build the RNN model
 
 input_tensor = Input(shape=(1, 264600))
-print(input_tensor.shape)
+print(data.X_train.shape[-1])
 model = Sequential()
 model.add(LSTM(output_dim=50,
     return_sequences=True, input_shape= data.X_train.shape[-1]))
