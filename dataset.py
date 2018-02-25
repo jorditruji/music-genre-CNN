@@ -84,27 +84,19 @@ class dataset:
             count = 0
             printProgressBar(count_progress+1, len(labels), prefix='Progress:', suffix='Complete', length=50)
             count_progress += 1
-            total_x=[]
 #TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
             for sample in class_sample:
                 x = []
                 #mfcc_feat = mfcc(sample, 44100)
-                
-
                 x.append(sample)
-
-
                 x = np.array(x)
-                total_x.append(x)
-                #print(x.shape)
-                #x = x.transpose(1, 2, 0)
 
             if count < n_samples_train:
-                X_train.append(total_x)
+                X_train.append(x)
                 self.labels_train.append(label)
                 count += 1
             else:
-                X_val.append(total_x)
+                X_val.append(x)
                 self.labels_val.append(label)
 
         # Convert data values to float32
