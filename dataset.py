@@ -78,8 +78,6 @@ class dataset:
         count_progress = 0
         X_train = []
         X_val = []
-        print(len(data))
-        print(len(labels))
         for class_sample, label in zip(data, labels):
             count = 0
             printProgressBar(count_progress+1, len(labels), prefix='Progress:', suffix='Complete', length=50)
