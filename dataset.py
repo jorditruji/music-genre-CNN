@@ -104,6 +104,7 @@ class dataset:
                 total_x.append(x)
                 #print(x.shape)
                 #x = x.transpose(1, 2, 0)
+            print(count)
             if count < n_samples_train:
                 X_train.append(total_x)
                 self.labels_train.append(label)
