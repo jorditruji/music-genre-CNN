@@ -70,13 +70,14 @@ print(data.X_train.shape)
 print(data.labels_train.shape)
 # Build the RNN model
 
-input_tensor = Input(shape=data.X_train.shape)
+input_tensor = Input(shape=(none))
 
 model = Sequential()
-model.add(LSTM(2, input_shape= input_tensor.shape))
+model.add(LSTM(output_dim=50,
+    return_sequences=True, input_shape= input_tensor.shape))
 
 model.add(Dense(10, activation='softmax'))
-model.summary()
+
 '''
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 model.fit(X, y, epochs=500, batch_size=1, verbose=2)
@@ -85,6 +86,7 @@ model.fit(X, y, epochs=500, batch_size=1, verbose=2)
 
 sgd = SGD(lr=0.1, momentum=0, decay=0.002, nesterov=True)
 model.compile(loss='categorical_crossentropy', optimizer='RMSProp', metrics=['accuracy'])
+model.summary()
 history = model.fit(data.X_train, data.labels_train,
                               validation_data=(data.X_val, data.labels_val), nb_epoch=100,
                               batch_size=24,verbose=1)
