@@ -74,7 +74,7 @@ input_tensor = Input(shape=data.X_train.shape[-1])
 print(data.X_train.shape[-1])
 model = Sequential()
 model.add(LSTM(output_dim=50,
-    return_sequences=True, input_shape= input_tensor.shape)
+    return_sequences=True, input_shape= input_tensor.shape))
 
 model.add(Dense(10, activation='softmax'))
 
