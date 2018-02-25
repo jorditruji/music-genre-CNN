@@ -69,7 +69,7 @@ class dataset:
                 #class_data.append()#load_audio(file))
             data.append(class_data)
 
-        n_samples_class = 400
+        n_samples_class = 100
         #print(np.array(data)[0,:,:].shape)
         n_samples_train = round(n_samples_class * 0.6)
         n_samples_test = n_samples_class - n_samples_train
@@ -81,8 +81,6 @@ class dataset:
         print(len(data))
         print(len(labels))
         for class_sample, label in zip(data, labels):
-            print(len(class_sample))
-            print(len(label))
             count = 0
             printProgressBar(count_progress+1, len(labels), prefix='Progress:', suffix='Complete', length=50)
             count_progress += 1
@@ -100,7 +98,7 @@ class dataset:
                 total_x.append(x)
                 #print(x.shape)
                 #x = x.transpose(1, 2, 0)
-            print(count)
+
             if count < n_samples_train:
                 X_train.append(total_x)
                 self.labels_train.append(label)
